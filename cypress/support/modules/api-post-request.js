@@ -2,8 +2,8 @@ const email = Cypress.env('EMAIL')
 const password = Cypress.env('PASSWORD')
 export const postLogin = () => {
   const requestBody = {
-        email: email,
-        password: password
+        email: 'ibe@gmail.com',
+        password: 'Password123$'
       };
   return cy
     .request({
