@@ -26,9 +26,9 @@ describe('Triage Attended - Post Patient to Consultation', () => {
     }
 
     cy.visit('/login')
-    cy.get('input[type="email"]').type('admin@demo-hospital.com', { delay: 150 })
+    cy.get('input[type="email"]').type('ibe@gmail.com', { delay: 150 })
     cy.wait(shortPause)
-    cy.get('input[type="password"]').type('Admin@123456', { delay: 150 })
+    cy.get('input[type="password"]').type('Password123$', { delay: 150 })
     cy.wait(shortPause)
     cy.get('button[type="submit"]').click()
     cy.url().should('not.include', '/login')

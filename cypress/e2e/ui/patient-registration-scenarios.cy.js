@@ -1,8 +1,8 @@
 describe('Patient Registration - Additional Scenarios', () => {
   const loginAndOpenRegistration = () => {
     cy.visit('/login')
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
     cy.url().should('not.include', '/login')
 

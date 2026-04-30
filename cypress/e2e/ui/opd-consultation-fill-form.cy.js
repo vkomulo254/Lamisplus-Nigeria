@@ -175,9 +175,9 @@ describe('OPD Consultation - Fill Consultation Form', () => {
     }
 
     cy.visit('/login')
-    cy.get('input[type="email"]').type('admin@demo-hospital.com', { delay: 120 })
+    cy.get('input[type="email"]').type('ibe@gmail.com', { delay: 120 })
     cy.wait(600)
-    cy.get('input[type="password"]').type('Admin@123456', { delay: 120 })
+    cy.get('input[type="password"]').type('Password123$', { delay: 120 })
     cy.wait(600)
     cy.get('button[type="submit"]').click()
     cy.url({ timeout: 30000 }).should('not.include', '/login')

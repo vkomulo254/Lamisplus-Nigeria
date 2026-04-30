@@ -10,9 +10,9 @@ describe('Triage Capture Vitals', () => {
     }
 
     cy.visit('/login')
-    cy.get('input[type="email"]').type('admin@demo-hospital.com', { delay: 120 })
+    cy.get('input[type="email"]').type('ibe@gmail.com', { delay: 120 })
     cy.wait(500)
-    cy.get('input[type="password"]').type('Admin@123456', { delay: 120 })
+    cy.get('input[type="password"]').type('Password123$', { delay: 120 })
     cy.wait(500)
     cy.get('button[type="submit"]').click()
     cy.url().should('not.include', '/login')

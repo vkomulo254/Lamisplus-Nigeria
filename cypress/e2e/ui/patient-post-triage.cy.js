@@ -5,8 +5,8 @@ describe('Post Patient to Triage', () => {
 
     // ─── Step 1: Login ────────────────────────────────────────────────────────
     cy.visit('/login')
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
     cy.url().should('not.include', '/login')
     cy.wait(3000)

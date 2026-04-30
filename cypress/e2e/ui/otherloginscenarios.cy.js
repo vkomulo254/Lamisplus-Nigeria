@@ -12,7 +12,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     cy.get('input[type="email"]').type('invalid-email')
 
     // Enter password
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('Password123$')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -24,7 +24,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
   it('should show error for empty email field', () => {
     // Leave email empty
     // Enter password
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('Password123$')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -35,7 +35,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should show error for empty password field', () => {
     // Enter email
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
 
     // Leave password empty
     // Click sign in button
@@ -71,7 +71,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should show error for correct email but wrong password', () => {
     // Enter correct email
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
 
     // Enter wrong password
     cy.get('input[type="password"]').type('wrongpassword')
@@ -88,7 +88,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     cy.get('input[type="email"]').type('wrong@email.com')
 
     // Enter correct password
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('Password123$')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -99,10 +99,10 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle case-sensitive email', () => {
     // Enter email with different case
-    cy.get('input[type="email"]').type('ADMIN@DEMO-HOSPITAL.COM')
+    cy.get('input[type="email"]').type('IBE@GMAIL.COM')
 
     // Enter password
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('Password123$')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -113,10 +113,10 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle leading/trailing spaces in email', () => {
     // Enter email with spaces
-    cy.get('input[type="email"]').type('  admin@demo-hospital.com  ')
+    cy.get('input[type="email"]').type('  ibe@gmail.com  ')
 
     // Enter password
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('  Password123$  ')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -127,10 +127,10 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle leading/trailing spaces in password', () => {
     // Enter email
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
 
     // Enter password with spaces
-    cy.get('input[type="password"]').type('  Admin@123456  ')
+    cy.get('input[type="password"]').type('  Password123$  ')
 
     // Click sign in button
     cy.get('button[type="submit"]').click()
@@ -142,7 +142,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
   it('should prevent multiple rapid login attempts', () => {
     // Attempt multiple rapid logins
     for (let i = 0; i < 5; i++) {
-      cy.get('input[type="email"]').clear().type('admin@demo-hospital.com')
+      cy.get('input[type="email"]').clear().type('ibe@gmail.com')
       cy.get('input[type="password"]').clear().type('wrongpassword')
       cy.get('button[type="submit"]').click()
     }
@@ -161,8 +161,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should remember user session after login', () => {
     // Login successfully
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Assert login success
@@ -183,8 +183,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     cy.url().should('include', '/login')
 
     // Login
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Should be redirected back to dashboard
@@ -195,8 +195,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     // Mock network failure
     cy.intercept('POST', '**/login', { forceNetworkError: true }).as('loginRequest')
 
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Assert network error message
@@ -207,8 +207,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     // Mock server error
     cy.intercept('POST', '**/login', { statusCode: 500 }).as('loginRequest')
 
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Assert server error message
@@ -229,13 +229,13 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should maintain form state on page refresh', () => {
     // Enter email
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
 
     // Refresh page
     cy.reload()
 
     // Email should still be there
-    cy.get('input[type="email"]').should('have.value', 'admin@demo-hospital.com')
+    cy.get('input[type="email"]').should('have.value', 'ibe@gmail.com')
   })
 
   it('should handle very long email input', () => {
@@ -259,7 +259,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
   it('should handle special characters in password', () => {
     const specialPassword = 'Admin@123!#$%^&*()'
 
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
     cy.get('input[type="password"]').type(specialPassword)
     cy.get('button[type="submit"]').click()
 
@@ -270,7 +270,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
   it('should handle unicode characters in email', () => {
     // Test with unicode in local part (if supported)
     cy.get('input[type="email"]').type('tëst@example.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Should either work or show appropriate error
@@ -285,8 +285,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle browser back/forward navigation', () => {
     // Login successfully
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
     cy.url().should('not.include', '/login')
 
@@ -325,8 +325,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
       })
     }).as('slowLogin')
 
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Should eventually succeed
@@ -336,7 +336,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should validate password strength requirements', () => {
     // Test weak password
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
     cy.get('input[type="password"]').type('123')
     cy.get('button[type="submit"]').click()
 
@@ -353,8 +353,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
     }).as('loginRequest')
 
     // Trigger multiple rapid clicks
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
 
     cy.get('button[type="submit"]').click()
     cy.get('button[type="submit"]').click()
@@ -375,8 +375,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
   })
 
   it('should handle form submission via Enter key', () => {
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
 
     // Press Enter in password field
     cy.get('input[type="password"]').type('{enter}')
@@ -393,8 +393,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
       })
     }).as('slowLogin')
 
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Button should be disabled during loading
@@ -455,8 +455,8 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle two-factor authentication', () => {
     // Login with 2FA enabled account
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
-    cy.get('input[type="password"]').type('Admin@123456')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
+    cy.get('input[type="password"]').type('Password123$')
     cy.get('button[type="submit"]').click()
 
     // Check if 2FA prompt appears
@@ -483,7 +483,7 @@ describe('Login Page - Edge Cases and Error Scenarios', () => {
 
   it('should handle password expiration', () => {
     // Login with expired password
-    cy.get('input[type="email"]').type('admin@demo-hospital.com')
+    cy.get('input[type="email"]').type('ibe@gmail.com')
     cy.get('input[type="password"]').type('expiredpassword')
     cy.get('button[type="submit"]').click()
 
