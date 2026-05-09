@@ -1,6 +1,20 @@
 {
+  "scripts": {
+    "cy:ui": "cypress run --config-file ui.config.js",
+    "cy:ui:open": "cypress open --config-file ui.config.js",
+    "cy:api": "cypress run --config-file api.config.js",
+    "cy:api:open": "cypress open --config-file api.config.js",
+
+    "report:ui": "marge cypress/reports/ui/*.json -f ui-report -o cypress/reports/ui/final",
+    "report:api": "marge cypress/reports/api/*.json -f api-report -o cypress/reports/api/final"
+  },
   "dependencies": {
     "cypress": "^15.14.0",
     "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

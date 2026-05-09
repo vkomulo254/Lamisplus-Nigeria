@@ -1,4 +1,4 @@
-name: UI Tests
+name: API Tests
 
 on:
   workflow_dispatch:
@@ -6,9 +6,9 @@ on:
     branches: [master]
   pull_request: 
     branches: [master]
-    
+
 jobs:
-  ui-tests:
+  api-tests:
     runs-on: ubuntu-latest
 
     env:
@@ -25,14 +25,14 @@ jobs:
 
       - run: npm ci
 
-      - name: Run UI Tests
-        run: npm run cy:ui
+      - name: Run API Tests
+        run: npm run cy:api
 
-      - name: Generate UI Report
-        run: npm run report:ui
+      - name: Generate API Report
+        run: npm run report:api
 
-      - name: Upload UI Report
+      - name: Upload API Report
         uses: actions/upload-artifact@v4
         with:
-          name: ui-report
-          path: cypress/reports/ui/final
+          name: api-report
+          path: cypress/reports/api/final
