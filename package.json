@@ -1,4 +1,5 @@
 {
+ "type": "module", 
   "scripts": {
     "cy:ui": "cypress run --config-file ui.config.js",
     "cy:ui:open": "cypress open --config-file ui.config.js",

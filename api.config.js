@@ -1,7 +1,8 @@
-const { defineConfig } = require("cypress");
-require("dotenv").config();
+import { defineConfig } from "cypress";
+import dotenv from "dotenv";
+dotenv.config();
 
-module.exports = defineConfig({
+export default defineConfig({
   reporter: 'mochawesome',
 
   reporterOptions: {
@@ -13,7 +14,6 @@ module.exports = defineConfig({
 
   e2e: {
     specPattern: 'cypress/e2e/api/**/*.cy.js',
-    //supportFile: 'cypress/support/api.js',
 
     baseUrl: 'https://qa.lamisplus.org',
 
